@@ -25,18 +25,74 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: darkblue;
+            transform: scale(1.05);
+        }
+
+        /* Початково привітання приховане */
+        #greeting {
+            opacity: 0;
+            transform: translateY(25px) scale(0.9);
+            margin-top: 30px;
+            color: darkblue;
+            font-size: 45px;
+            font-weight: bold;
+            pointer-events: none;
+        }
+
+        /* Анімація появи */
+        #greeting.show {
+            animation: appear 1s ease forwards;
+        }
+
+        @keyframes appear {
+            0% {
+                opacity: 0;
+                transform: translateY(25px) scale(0.9);
+            }
+
+            60% {
+                opacity: 1;
+                transform: translateY(-5px) scale(1.05);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
     </style>
 </head>
+
 <body>
 
     <h1>Привіт! Це мій сайт</h1>
 
     <p>Я створив свій перший сайт за допомогою HTML!</p>
 
-    <button onclick="alert('Привіт!')">
+    <button onclick="showGreeting()">
         Натисни мене
     </button>
+
+    <div id="greeting">Привіт! 👋</div>
+
+    <script>
+        function showGreeting() {
+            const greeting = document.getElementById("greeting");
+
+            greeting.classList.remove("show");
+
+            // Перезапускаємо анімацію
+            void greeting.offsetWidth;
+
+            greeting.classList.add("show");
+        }
+    </script>
 
 </body>
 </html>
